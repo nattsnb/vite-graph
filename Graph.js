@@ -1,30 +1,53 @@
-import {GraphNode} from "./GraphNode.js";
+import { GraphNode } from "./GraphNode.js";
 
 export class Graph {
-    nodes = [];
-    constructor(firstNode) {
-        this.nodes.push(firstNode);
-    }
+  nodes = [];
+  constructor(firstNode) {
+    this.nodes.push(firstNode);
+  }
 
-    add(value, neighbourA, neighbourB) {
-        if(this.nodes.find(node => node === neighbourA) || this.nodes.find(node => node === neighbourB)) {
-            const newMember = new GraphNode(value, neighbourA, neighbourB);
-            this.nodes.push(newMember);
-            return newMember;
+  add(value, neighbourA, neighbourB) {
+    if (
+      this.nodes.find((node) => node === neighbourA) ||
+      this.nodes.find((node) => node === neighbourB)
+    ) {
+      const newMember = new GraphNode(value, neighbourA, neighbourB);
+      this.nodes.push(newMember);
+      return newMember;
+    } else {
+      throw new Error("No such members.");
+    }
+  }
+  getEdgesOfGraph() {
+    let edges = [];
+    for (const element of this.nodes) {
+      const edgesOfNode = element.getEdgesOfNode();
+      for (const element of edgesOfNode) {
+        edges.push(element);
+      }
+    }
+    return edges;
+  }
+  createAdjacenceMatrix() {
+    let adjacenceMatrix = [[""]];
+    for (const element of this.nodes) {
+      adjacenceMatrix[0].push(element);
+      const edgesOfNode = element.getEdgesOfNode();
+      let arrayOfNeighbours = [];
+      for (const element of edgesOfNode) {
+        arrayOfNeighbours.push(element.BNode);
+      }
+      let matrixVerse = [];
+      matrixVerse.push(element);
+      for (let i = 0; i <= this.nodes.length; i++) {
+        if (arrayOfNeighbours.includes(this.nodes[i])) {
+          matrixVerse.push("1");
         } else {
-            throw new Error('No such members.');
+          matrixVerse.push("0");
         }
+      }
+      adjacenceMatrix.push(matrixVerse);
     }
-    getEdgesOfGraph(){
-        let edges = []
-        for (const element of this.nodes) {
-            const edgesOfNode = element.getEdgesOfNode()
-            for (const element of edgesOfNode) {
-                edges.push(element)
-            }
-        }
-        return edges
-    }
-
+    console.log(adjacenceMatrix);
+  }
 }
-
