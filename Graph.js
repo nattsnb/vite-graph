@@ -2,7 +2,6 @@ import {GraphNode} from "./GraphNode.js";
 
 export class Graph {
     nodes = [];
-    let adjacencyMatrix = [[]]
     constructor(firstNode) {
         this.nodes.push(firstNode);
     }
@@ -16,7 +15,16 @@ export class Graph {
             throw new Error('No such members.');
         }
     }
-
+    getEdgesOfGraph(){
+        let edges = []
+        for (const element of this.nodes) {
+            const edgesOfNode = element.getEdgesOfNode()
+            for (const element of edgesOfNode) {
+                edges.push(element)
+            }
+        }
+        return edges
+    }
 
 }
 

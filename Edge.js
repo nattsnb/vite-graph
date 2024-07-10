@@ -1,4 +1,6 @@
 export class Edge {
-    constructor() {
+    constructor(ANode, BNode) {
+        this.ANode = ANode
+        this.BNode = BNode
     }
 }
