@@ -2,6 +2,7 @@ import {GraphNode} from "./GraphNode.js";
 
 export class Graph {
     nodes = [];
+    let adjacencyMatrix = [[]]
     constructor(firstNode) {
         this.nodes.push(firstNode);
     }
