@@ -11,6 +11,3 @@ const graph = new Graph(firstNode);
 const secondNode = graph.add(12, firstNode, null);
 const thirdNode = graph.add(31, secondNode, firstNode);
 const lastNode = graph.add(666, thirdNode, null);
-console.log(graph);
-graph.createAdjacenceMatrix();
-console.log(graph.getEdgesOfGraph());

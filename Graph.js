@@ -50,4 +50,8 @@ export class Graph {
     }
     console.log(adjacenceMatrix);
   }
+
+  deleteEdge(sourceNode, targetNode) {
+    sourceNode.askNodeToDeleteEdge(targetNode);
+  }
 }

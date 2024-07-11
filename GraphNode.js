@@ -5,7 +5,7 @@ export class GraphNode {
   constructor(value, leftMember, rightMember) {
     this.value = value;
     this.id = GraphNode.uuidv4();
-    this.createEdges(leftMember, rightMember);
+    this.createEdgesOfNode(leftMember, rightMember);
   }
 
   static uuidv4() {
@@ -17,18 +17,28 @@ export class GraphNode {
     );
   }
 
-  createEdges(leftMember, rightMember) {
+  createEdgesOfNode(leftMember, rightMember) {
     if (leftMember) {
-      const edge = new Edge(this, leftMember);
-      this.edges.push(edge);
+      this.createEdge(leftMember);
     }
     if (rightMember) {
-      const edge = new Edge(this, rightMember);
-      this.edges.push(edge);
+      this.createEdge(rightMember);
     }
+  }
+
+  createEdge(member) {
+    const edge = new Edge(this, member);
+    this.edges.push(edge);
   }
 
   getEdgesOfNode() {
     return this.edges;
+  }
+
+  askNodeToDeleteEdge(targetNode) {
+    const edgeToDelete = this.edges.filter(function findEdgeToDelete(edge) {
+      return edge.BNode === targetNode;
+    });
+    this.edges.splice(this.edges.indexOf(edgeToDelete), 1);
   }
 }
