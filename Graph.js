@@ -54,4 +54,16 @@ export class Graph {
   askNodeToDeleteEdge(sourceNode, targetNode) {
     sourceNode.askNodeToDeleteEdge(targetNode);
   }
+
+  deleteNode(nodeToDelete) {
+    this.nodes.splice(this.nodes.indexOf(nodeToDelete), 1);
+    let edgesWithNodeToDelete = this.getEdgesOfGraph().filter(
+      function getEdgesWithTheNode(node) {
+        return node.BNode === nodeToDelete;
+      },
+    );
+    for (const element of edgesWithNodeToDelete) {
+      element.ANode.edges.splice(element.ANode.edges.indexOf(element));
+    }
+  }
 }
