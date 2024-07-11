@@ -35,7 +35,7 @@ export class GraphNode {
     return this.edges;
   }
 
-  askNodeToDeleteEdge(targetNode) {
+  deleteEdge(targetNode) {
     const edgeToDelete = this.edges.filter(function findEdgeToDelete(edge) {
       return edge.BNode === targetNode;
     });

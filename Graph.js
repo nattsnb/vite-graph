@@ -51,7 +51,7 @@ export class Graph {
     console.log(adjacenceMatrix);
   }
 
-  deleteEdge(sourceNode, targetNode) {
+  askNodeToDeleteEdge(sourceNode, targetNode) {
     sourceNode.askNodeToDeleteEdge(targetNode);
   }
 }
