@@ -48,7 +48,7 @@ export class Graph {
       }
       adjacenceMatrix.push(matrixVerse);
     }
-    console.log(adjacenceMatrix);
+    return adjacenceMatrix
   }
 
   askNodeToDeleteEdge(sourceNode, targetNode) {
