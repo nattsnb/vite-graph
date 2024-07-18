@@ -52,7 +52,7 @@ export class Graph {
   }
 
   askNodeToDeleteEdge(sourceNode, targetNode) {
-    sourceNode.askNodeToDeleteEdge(targetNode);
+    sourceNode.deleteEdge(targetNode);
   }
 
   deleteNode(nodeToDelete) {
