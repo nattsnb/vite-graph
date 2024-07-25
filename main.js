@@ -11,6 +11,8 @@ const graph = new Graph(firstNode);
 const secondNode = graph.add(12, firstNode, null);
 const thirdNode = graph.add(31, secondNode, firstNode);
 const fourthNode = graph.add(666, thirdNode, null);
+const sixthNode = graph.add(32, secondNode, firstNode);
+console.log(graph.nodes);
 console.log(graph.getEdgesOfGraph());
 graph.askNodeToDeleteEdge(thirdNode, firstNode);
 console.log(graph.getEdgesOfGraph());
